@@ -1,7 +1,7 @@
 import styles from './page.module.css';
 import { GradientButton, PrimaryButton } from './ui/buttons';
 import Image from 'next/image';
-import SocialMedial from './ui/socialMedial';
+import SocialMedial from './ui/socialMedia';
 import facebookIcon from '@/app/assets/icons/facebook.svg';
 import instagramIcon from '@/app/assets/icons/instagram.svg';
 import twitterIcon from '@/app/assets/icons/twitter.svg';
