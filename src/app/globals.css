@@ -1,5 +1,14 @@
 :root {
-  
+  --font-poppins: 'Poppins', sans-serif;
+
+  --bg-color: #ffffff;
+  --fg-color: #000000;
+  --primary-color: #FFCC00;
+  --regular-color: #484848;
+  --regular-light-color: #B6B6B6;
+  --text-color: #272727;
+  --heading-color: #242424;
+  --bg-primary-color: #FFFB97;
 }
 
 html,
@@ -9,7 +18,7 @@ body {
 }
 
 body {
-  font-family: --font-poppins;
+  font-family: var(--font-poppins);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
