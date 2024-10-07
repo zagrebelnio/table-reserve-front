@@ -1,0 +1,47 @@
+.main {
+  margin-top: 105px;
+}
+
+.content {
+  padding: 70px 0;
+  display: flex;
+  gap: 110px;
+  justify-content: center;
+}
+
+.text {
+  width: 760px;
+}
+
+.text h1 {
+  padding: 10px 32px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--bg-color);
+  background-color: var(--title-color);
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.text h2 {
+  margin-top: 28px;
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--regular-color);
+  margin-bottom: 85px;
+}
+
+.text h2 span {
+  font-size: 38px;
+  color: var(--restaurant-color);
+}
+
+.text span {
+  font-weight: 500;
+  color: var(--restaurant-color);
+}
+
+.text p {
+  font-size: 20px;
+  color: var(--fg-color);
+}
