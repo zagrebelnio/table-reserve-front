@@ -1,0 +1,105 @@
+.main {
+  margin-top: 105px;
+}
+
+.content {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  padding: 80px 0;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  width: 630px;
+}
+
+.info h1 {
+  padding: 10px 32px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--bg-color);
+  background-color: var(--title-color);
+  border-radius: 8px;
+  display: inline-block;
+  align-self: flex-end;
+}
+
+.address {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.address img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.address p,
+.workHours p {
+  font-size: 14px;
+}
+
+.workHours {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.workHoursList {
+  display: flex;
+  gap: 50px;
+  font-size: 16px;
+  color: var(--regular-color);
+  line-height: 29px;
+}
+
+.phone {
+  display: flex;
+  gap: 10px;
+  margin-top: 45px;
+  align-items: center;
+}
+
+.phone img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.phoneList {
+  list-style: none;
+  font-size: 14px;
+}
+
+.email {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 50px;
+  font-size: 14px;
+}
+
+.email img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.socials {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-top: 40px;
+  font-size: 14px;
+}
+
+.socialsContainer {
+  display: flex;
+  gap: 15px;
+}
