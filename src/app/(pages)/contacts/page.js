@@ -1,13 +1,15 @@
 import styles from './page.module.css';
 import Image from 'next/image';
-import tableImage from '@/app/assets/images/table.png';
-import mapMarkerIcon from '@/app/assets/icons/map-marker.svg';
-import phoneIcon from '@/app/assets/icons/phone.svg';
-import emailIcon from '@/app/assets/icons/email.svg';
-import SocialMedial from '../ui/socialMedia';
-import facebookIcon from '@/app/assets/icons/facebook.svg';
-import instagramIcon from '@/app/assets/icons/instagram.svg';
-import twitterIcon from '@/app/assets/icons/twitter.svg';
+import {
+  tableImage,
+  mapMarkerIcon,
+  phoneIcon,
+  emailIcon,
+  facebookIcon,
+  instagramIcon,
+  twitterIcon,
+} from '@/app/assets/media';
+import SocialMedial from '../../ui/socialMedia';
 
 export default function Contacts() {
   return (

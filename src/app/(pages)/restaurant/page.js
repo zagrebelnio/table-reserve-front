@@ -1,6 +1,6 @@
 import styles from './page.module.css';
 import Image from 'next/image';
-import restaurantImage from '@/app/assets/images/restaurant.png';
+import { restaurantImage } from '@/app/assets/media';
 
 export default function Restaurant() {
   return (

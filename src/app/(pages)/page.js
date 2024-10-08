@@ -1,14 +1,16 @@
 import styles from './page.module.css';
-import { GradientButton, PrimaryButton } from './ui/buttons';
+import { GradientButton, PrimaryButton } from '../ui/buttons';
 import Image from 'next/image';
-import SocialMedial from './ui/socialMedia';
-import facebookIcon from '@/app/assets/icons/facebook.svg';
-import instagramIcon from '@/app/assets/icons/instagram.svg';
-import twitterIcon from '@/app/assets/icons/twitter.svg';
-import heroImage from '@/app/assets/images/hero.png';
-import timeIcon from '@/app/assets/icons/time.svg';
-import tableIcon from '@/app/assets/icons/table.svg';
-import doneIcon from '@/app/assets/icons/done.svg';
+import SocialMedial from '../ui/socialMedia';
+import {
+  facebookIcon,
+  instagramIcon,
+  twitterIcon,
+  heroImage,
+  timeIcon,
+  tableIcon,
+  doneIcon,
+} from '@/app/assets/media';
 
 export default function Home() {
   return (

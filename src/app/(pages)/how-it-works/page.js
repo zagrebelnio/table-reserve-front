@@ -1,9 +1,7 @@
-import { PrimaryButton } from '../ui/buttons';
+import { PrimaryButton } from '../../ui/buttons';
 import styles from './page.module.css';
 import Image from 'next/image';
-import tableIcon from '@/app/assets/icons/table.svg';
-import detailsIcon from '@/app/assets/icons/details.svg';
-import likeIcon from '@/app/assets/icons/like.svg';
+import { tableIcon, detailsIcon, likeIcon } from '@/app/assets/media';
 
 export default function HowItWorks() {
   return (

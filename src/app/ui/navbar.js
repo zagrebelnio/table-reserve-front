@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { PrimaryButton, SecondaryButton } from './buttons';
 import styles from './navbar.module.css';
-import icon from '@/app/icon.svg';
+import { logoIcon } from '@/app/assets/media';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -12,7 +12,7 @@ export default function Navbar() {
   return (
     <nav className={styles.navbar}>
       <Link href="/">
-        <Image src={icon} width={65} height={65} alt="logo" />
+        <Image src={logoIcon} width={65} height={65} alt="logo" />
       </Link>
       <Link
         href="/restaurant"

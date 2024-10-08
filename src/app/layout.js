@@ -13,7 +13,7 @@ export const metadata = {
   description:
     'Зручно забронюйте столик онлайн за кілька кліків - швидко, просто і без турбот',
   icons: {
-    icon: '/icon.svg',
+    icon: './logo.svg',
   },
 };
 
