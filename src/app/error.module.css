@@ -1,0 +1,15 @@
+.main { 
+  margin-top: 105px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  padding: 200px 0;
+}
+
+.main h1 {
+  font-size: 48px;
+  color: var(--heading-color);
+  font-weight: 700;
+}
