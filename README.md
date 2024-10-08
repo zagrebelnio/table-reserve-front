@@ -26,7 +26,7 @@ You can view the project design [here](https://www.figma.com/design/XQsOCsgUn9yw
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/zagrebelnio/table-reserve-front
    ```
 
 2. **Install dependencies**
