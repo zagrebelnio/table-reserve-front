@@ -45,8 +45,12 @@ export default function Navbar() {
         Контакти
       </Link>
       <div className={styles.buttons}>
-        <SecondaryButton>Увійти</SecondaryButton>
-        <PrimaryButton>Зареєструватися</PrimaryButton>
+        <Link href="/auth?mode=login">
+          <SecondaryButton>Увійти</SecondaryButton>
+        </Link>
+        <Link href="/auth?mode=signup">
+          <PrimaryButton>Зареєструватися</PrimaryButton>
+        </Link>
       </div>
     </nav>
   );
