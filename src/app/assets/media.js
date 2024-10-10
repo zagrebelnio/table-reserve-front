@@ -6,7 +6,9 @@ import facebookIcon from '@/app/assets/icons/facebook.svg';
 import inquiryIcon from '@/app/assets/icons/inquiry.svg';
 import instagramIcon from '@/app/assets/icons/instagram.svg';
 import likeIcon from '@/app/assets/icons/like.svg';
+import listIcon from '@/app/assets/icons/list.svg';
 import logoIcon from '@/app/assets/icons/logo.svg';
+import logoutIcon from '@/app/assets/icons/logout.svg';
 import mapMarkerIcon from '@/app/assets/icons/map-marker.svg';
 import phoneIcon from '@/app/assets/icons/phone.svg';
 import qaIcon from '@/app/assets/icons/qa.svg';
@@ -31,7 +33,9 @@ export {
   inquiryIcon,
   instagramIcon,
   likeIcon,
+  listIcon,
   logoIcon,
+  logoutIcon,
   mapMarkerIcon,
   phoneIcon,
   qaIcon,

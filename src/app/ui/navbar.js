@@ -57,12 +57,14 @@ export default function Navbar() {
         </div>
       )}
       {isAuthenticated && (
-        <div className={styles.user}>
-          <Image src={defaultAvatar} alt="avatar" />
-          <p>
-            {user.firstName} {user.lastName}
-          </p>
-        </div>
+        <Link href="/profile">
+          <div className={styles.user}>
+            <Image src={defaultAvatar} alt="avatar" />
+            <p>
+              {user.firstName} {user.lastName}
+            </p>
+          </div>
+        </Link>
       )}
     </nav>
   );

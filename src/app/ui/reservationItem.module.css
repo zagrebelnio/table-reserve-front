@@ -1,0 +1,23 @@
+.item {
+  display: flex;
+  align-items: center;
+  gap: 70px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 100;
+  color: var(--regular-color);
+}
+
+.value {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--fg-color);
+}
