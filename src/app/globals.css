@@ -15,6 +15,8 @@
   --restaurant-color: #0094FF;
   --bg-icon-color: #ECF5FF;
   --bg-input-color: #E6E6E6;
+
+  --navbar-height: 105px;
 }
 
 html,
@@ -38,4 +40,8 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+main {
+  margin-top: var(--navbar-height);
 }
