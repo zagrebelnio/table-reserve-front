@@ -15,6 +15,7 @@ import timeIcon from '@/app/assets/icons/time.svg';
 import trophyIcon from '@/app/assets/icons/trophy.svg';
 import twitterIcon from '@/app/assets/icons/twitter.svg';
 
+import defaultAvatar from '@/app/assets/images/default-avatar.png';
 import heroImage from '@/app/assets/images/hero.png';
 import restaurantHallImage from '@/app/assets/images/restaurant-hall.png';
 import restaurantImage from '@/app/assets/images/restaurant.png';
@@ -22,6 +23,7 @@ import tableImage from '@/app/assets/images/table.png';
 
 export {
   countdownIcon,
+  defaultAvatar,
   detailsIcon,
   doneIcon,
   emailIcon,

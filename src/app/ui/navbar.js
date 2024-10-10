@@ -4,10 +4,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { PrimaryButton, SecondaryButton } from './buttons';
 import styles from './navbar.module.css';
-import { logoIcon } from '@/app/assets/media';
+import { logoIcon, defaultAvatar } from '@/app/assets/media';
+import useUserStore from '@/app/store/userStore';
 
 export default function Navbar() {
   const pathname = usePathname();
+  const { isAuthenticated, user } = useUserStore();
 
   return (
     <nav className={styles.navbar}>
@@ -44,14 +46,24 @@ export default function Navbar() {
       >
         Контакти
       </Link>
-      <div className={styles.buttons}>
-        <Link href="/auth?mode=login">
-          <SecondaryButton>Увійти</SecondaryButton>
-        </Link>
-        <Link href="/auth?mode=signup">
-          <PrimaryButton>Зареєструватися</PrimaryButton>
-        </Link>
-      </div>
+      {!isAuthenticated && (
+        <div className={styles.buttons}>
+          <Link href="/auth?mode=login">
+            <SecondaryButton>Увійти</SecondaryButton>
+          </Link>
+          <Link href="/auth?mode=signup">
+            <PrimaryButton>Зареєструватися</PrimaryButton>
+          </Link>
+        </div>
+      )}
+      {isAuthenticated && (
+        <div className={styles.user}>
+          <Image src={defaultAvatar} alt="avatar" />
+          <p>
+            {user.firstName} {user.lastName}
+          </p>
+        </div>
+      )}
     </nav>
   );
 }
