@@ -2,6 +2,7 @@ import { PrimaryButton } from '../../ui/buttons';
 import styles from './page.module.css';
 import Image from 'next/image';
 import { tableIcon, detailsIcon, likeIcon } from '@/app/assets/media';
+import Link from 'next/link';
 
 export default function HowItWorks() {
   return (
@@ -26,7 +27,9 @@ export default function HowItWorks() {
             <p>На сайті, а також листом на пошті</p>
           </div>
         </div>
-        <PrimaryButton>Перейти до бронювання</PrimaryButton>
+        <Link href="/reservation">
+          <PrimaryButton>Перейти до бронювання</PrimaryButton>
+        </Link>
       </section>
     </main>
   );

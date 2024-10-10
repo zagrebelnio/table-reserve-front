@@ -11,6 +11,7 @@ import {
   tableIcon,
   doneIcon,
 } from '@/app/assets/media';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -24,7 +25,9 @@ export default function Home() {
             Зручно забронюйте столик онлайн за кілька кліків - швидко, просто і
             без турбот
           </p>
-          <GradientButton>Переглянути вільні місця</GradientButton>
+          <Link href="/reservation">
+            <GradientButton>Переглянути вільні місця</GradientButton>
+          </Link>
           <div className={styles.socials}>
             <SocialMedial
               link="https://www.facebook.com/"
@@ -61,7 +64,9 @@ export default function Home() {
             <p>Приходьте та насолоджуйтесь</p>
           </div>
         </div>
-        <PrimaryButton>Пошук</PrimaryButton>
+        <Link href="/reservation">
+          <PrimaryButton>Пошук</PrimaryButton>
+        </Link>
       </section>
     </main>
   );
