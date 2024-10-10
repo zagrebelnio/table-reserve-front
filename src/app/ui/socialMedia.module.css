@@ -7,10 +7,21 @@
   border-radius: 50%;
   background-color: var(--bg-color);
   border: 1px solid var(--fg-color);
+  transition: all 0.3s ease-in-out;
+  position: relative;
 }
 
 .link > img {
   width: 30px;
   height: 30px;
   object-fit: contain;
+}
+
+.link:hover {
+  background-color: var(--bg-hover-color);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.link:active {
+  top: 2px;
 }
