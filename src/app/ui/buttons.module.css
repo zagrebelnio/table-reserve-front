@@ -47,8 +47,37 @@
   object-fit: contain;
 }
 
+.cta {
+  font-family: var(--font-poppins);
+  text-transform: uppercase;
+  padding: 10px 20px;
+  color: var(--bg-color);
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+.edit {
+  background-color: var(--edit-btn-color);
+}
+
+.delete {
+  background-color: var(--delete-btn-color);
+}
+
+.reserve {
+  background-color: var(--reserve-btn-color);
+}
+
 .button:hover {
   box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
+}
+
+.cta:hover {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .primary:hover {
@@ -57,6 +86,18 @@
 
 .secondary:hover {
   background-color: var(--bg-hover-color);
+}
+
+.edit:hover {
+  background-color: var(--edit-btn-hover-color);
+}
+
+.delete:hover {
+  background-color: var(--delete-btn-hover-color);
+}
+
+.reserve:hover {
+  background-color: var(--reserve-btn-hover-color);
 }
 
 .gradient::after {

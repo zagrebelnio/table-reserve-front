@@ -33,3 +33,11 @@ export function IconButton({ icon, children, ...props }) {
     </button>
   );
 }
+
+export function CtaButton({ type, children, ...props }) {
+  return (
+    <button className={`${styles.cta} ${styles[type]}`} {...props}>
+      {children}
+    </button>
+  );
+}

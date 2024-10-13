@@ -17,6 +17,12 @@
   --bg-input-color: #E6E6E6;
   --bg-sidebar-color: #FFFDD4;
   --bg-reservation-color: #D7F5FF;
+  --edit-btn-color: #0094FF;
+  --edit-btn-hover-color: #0080E6;
+  --delete-btn-color: #FF0000;
+  --delete-btn-hover-color: #CC0000;
+  --reserve-btn-color: #00FF0A;
+  --reserve-btn-hover-color: #00E600;
 
   --navbar-height: 105px;
 }

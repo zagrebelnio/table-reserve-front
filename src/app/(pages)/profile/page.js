@@ -39,7 +39,9 @@ export default function Profile() {
         <section className={styles.profile}>
           <aside className={styles.sidebar}>
             <Image src={defaultAvatar} alt="avatar" />
-            <IconButton icon={listIcon}>Ваші бронювання</IconButton>
+            <Link href="/profile/reservations">
+              <IconButton icon={listIcon}>Ваші бронювання</IconButton>
+            </Link>
             <IconButton icon={logoutIcon} onClick={handleLogout}>
               Вийти
             </IconButton>
