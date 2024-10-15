@@ -7,7 +7,7 @@ import RESERVATIONS from '@/app/store/reservations';
 import { useState } from 'react';
 import { CtaButton } from '@/app/ui/buttons';
 
-export default function NewReservation() {
+export default function CancelReservation() {
   const steps = [
     {
       number: 1,

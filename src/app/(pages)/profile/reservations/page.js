@@ -1,6 +1,7 @@
 import styles from './page.module.css';
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { listIcon } from '@/app/assets/media';
 import RESERVATIONS from '@/app/store/reservations';
 import ReservationItem from '@/app/ui/reservationItem';
@@ -21,7 +22,9 @@ export default function Reservations() {
               <React.Fragment key={reservation.id}>
                 <ReservationItem reservation={reservation} />
                 <div className={styles.cta}>
-                  <CtaButton type="edit">Редагувати</CtaButton>
+                  <Link href="/reservation/edit">
+                    <CtaButton type="edit">Редагувати</CtaButton>
+                  </Link>
                   <CtaButton type="delete">Скасувати</CtaButton>
                 </div>
               </React.Fragment>
