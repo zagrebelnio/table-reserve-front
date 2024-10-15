@@ -1,0 +1,44 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 35px;
+  margin-top: 50px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 35px;
+  border: 1px solid var(--fg-color);
+  border-radius: 30px;
+  background-color: var(--bg-color);
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.inputContainer label {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--fg-color);
+}
+
+.inputContainer input {
+  font-family: var(--font-poppins);
+  font-size: 15px;
+  width: 750px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  padding: 0 10px;
+  background-color: var(--bg-input-color);
+}
+
+.form button {
+  padding: 20px 60px;
+}

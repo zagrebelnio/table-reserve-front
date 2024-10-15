@@ -31,7 +31,7 @@ export default function Reservation() {
           <h1>Бронювання</h1>
           <p>
             Вітаємо, ви можете забронювати столик, переглянути ваші поточні
-            бронювання та скасовувати їх!
+            бронювання та скасувати їх!
           </p>
           <div className={styles.cta}>
             <Link href="/reservation/new">
