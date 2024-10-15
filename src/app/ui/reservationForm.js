@@ -3,7 +3,7 @@ import { CtaButton } from './buttons';
 import styles from './reservationForm.module.css';
 import { useState } from 'react';
 
-export default function ReservationForm() {
+export default function ReservationForm({ ...props }) {
   const [formData, setFormData] = useState({
     date: new Date().toISOString().split('T')[0],
     time: '12:00',
@@ -15,7 +15,7 @@ export default function ReservationForm() {
   };
 
   return (
-    <form className={styles.form}>
+    <form className={styles.form} {...props}>
       <div className={styles.container}>
         <div className={styles.inputContainer}>
           <label htmlFor="date">Оберіть дату бронювання</label>

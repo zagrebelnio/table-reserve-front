@@ -25,3 +25,34 @@
   background-color: var(--delete-btn-color);
   color: var(--bg-color);
 }
+
+.tablesContainer {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  border: 1px solid var(--fg-color);
+  border-radius: 30px;
+  padding: 30px;
+}
+
+.tablesList {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.tableItem {
+  display: flex;
+  gap: 70px;
+  align-items: center;
+}
+
+.result {
+  font-size: 40px;
+  font-weight: 500;
+  color: var(--fg-color);
+  margin-top: 50px;
+  width: 700px;
+}
