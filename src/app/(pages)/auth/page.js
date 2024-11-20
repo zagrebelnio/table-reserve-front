@@ -3,17 +3,17 @@ import { PrimaryButton } from '@/app/ui/buttons';
 import styles from './page.module.css';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useState } from 'react';
-import useUserStore from '@/app/store/userStore';
+import { authService } from '@/app/lib/auth/authService';
 
 export default function Auth() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const mode = searchParams.get('mode');
-  const login = useUserStore((state) => state.login);
 
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
+    userName: '',
     email: '',
     password: '',
   });
@@ -22,10 +22,39 @@ export default function Auth() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleLogin = async (credentials) => {
+    try {
+      const token = await authService.login(credentials);
+      localStorage.setItem('authToken', token);
+      router.push('/');
+    } catch (error) {
+      console.error('Login error:', error);
+    }
+  };
+
+  const handleSignup = async (userData) => {
+    try {
+      await authService.register(userData);
+      const token = await authService.login({
+        userName: userData.userName,
+        password: userData.password,
+      });
+      localStorage.setItem('authToken', token);
+      router.push('/');
+    } catch (error) {
+      console.error('Registration error:', error);
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    login(formData);
-    router.push('/');
+
+    mode === 'login'
+      ? handleLogin({
+          userName: formData.userName,
+          password: formData.password,
+        })
+      : handleSignup(formData);
   };
 
   return (
@@ -54,15 +83,28 @@ export default function Auth() {
             />
           </>
         )}
-        <label htmlFor="email">Введіть Вашу пошту</label>
+        <label htmlFor="email">Введіть Ваш нікнейм</label>
         <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
+          type="text"
+          id="userName"
+          name="userName"
+          value={formData.userName}
           onChange={handleChange}
           required
         />
+        {mode === 'signup' && (
+          <>
+            <label htmlFor="email">Введіть Ваш email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </>
+        )}
         <label htmlFor="password">Введіть Ваш пароль</label>
         <input
           type="password"
