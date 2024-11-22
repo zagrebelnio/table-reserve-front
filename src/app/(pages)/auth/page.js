@@ -26,6 +26,8 @@ export default function Auth() {
     try {
       const token = await authService.login(credentials);
       localStorage.setItem('authToken', token);
+      const userData = await authService.getUserData(token);
+      localStorage.setItem('userData', JSON.stringify(userData));
       router.push('/');
     } catch (error) {
       console.error('Login error:', error);

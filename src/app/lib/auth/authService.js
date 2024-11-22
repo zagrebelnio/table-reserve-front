@@ -13,7 +13,7 @@ export const authService = {
         }
       );
 
-      return response.data.token;
+      return response.data;
     } catch (error) {
       throw error;
     }
@@ -31,6 +31,20 @@ export const authService = {
         }
       );
 
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  async getUserData(token) {
+    try {
+      const response = await axios.get('https://localhost:7174/user', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      });
       return response.data;
     } catch (error) {
       throw error;
