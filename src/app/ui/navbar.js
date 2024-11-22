@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { PrimaryButton, SecondaryButton } from './buttons';
 import styles from './navbar.module.css';
 import { logoIcon, defaultAvatar } from '@/app/assets/media';
-// import useUserStore from '@/app/store/userStore';
 import { useAuth } from '../lib/auth/authContext';
 
 export default function Navbar() {

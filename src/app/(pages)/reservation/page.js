@@ -6,10 +6,10 @@ import {
 } from '@/app/ui/buttons';
 import styles from './page.module.css';
 import Link from 'next/link';
-import useUserStore from '@/app/store/userStore';
+import { useAuth } from '@/app/lib/auth/authContext';
 
 export default function Reservation() {
-  const { isAuthenticated } = useUserStore();
+  const { isAuthenticated } = useAuth();
 
   return (
     <main className={styles.main}>

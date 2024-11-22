@@ -1,6 +1,5 @@
 'use client';
 import styles from './page.module.css';
-import useUserStore from '@/app/store/userStore';
 import Link from 'next/link';
 import Image from 'next/image';
 import { PrimaryButton, SecondaryButton, IconButton } from '@/app/ui/buttons';
@@ -8,10 +7,11 @@ import { defaultAvatar, listIcon, logoutIcon } from '@/app/assets/media';
 import ReservationItem from '@/app/ui/reservationItem';
 import RESERVATIONS from '@/app/store/reservations';
 import { useRouter } from 'next/navigation';
+import { useAuth } from '@/app/lib/auth/authContext';
 
 export default function Profile() {
   const router = useRouter();
-  const { isAuthenticated, user, logout } = useUserStore();
+  const { isAuthenticated, user, logout } = useAuth();
 
   function handleLogout() {
     router.push('/');
