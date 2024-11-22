@@ -44,7 +44,9 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ ...authState, logout: handleLogout }}>
+    <AuthContext.Provider
+      value={{ ...authState, logout: handleLogout, setAuthState }}
+    >
       {children}
     </AuthContext.Provider>
   );

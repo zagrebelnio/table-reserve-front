@@ -4,11 +4,13 @@ import styles from './page.module.css';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { authService } from '@/app/lib/auth/authService';
+import { useAuth } from '@/app/lib/auth/authContext';
 
 export default function Auth() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const mode = searchParams.get('mode');
+  const { setAuthState } = useAuth();
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -24,10 +26,8 @@ export default function Auth() {
 
   const handleLogin = async (credentials) => {
     try {
-      const token = await authService.login(credentials);
-      localStorage.setItem('authToken', token);
-      const userData = await authService.getUserData(token);
-      localStorage.setItem('userData', JSON.stringify(userData));
+      const { userData } = await authService.login(credentials);
+      setAuthState({ isAuthenticated: true, user: userData, loading: false });
       router.push('/');
     } catch (error) {
       console.error('Login error:', error);
@@ -37,11 +37,11 @@ export default function Auth() {
   const handleSignup = async (userData) => {
     try {
       await authService.register(userData);
-      const token = await authService.login({
+      await authService.login({
         userName: userData.userName,
         password: userData.password,
       });
-      localStorage.setItem('authToken', token);
+      setAuthState({ isAuthenticated: true, user: userData, loading: false });
       router.push('/');
     } catch (error) {
       console.error('Registration error:', error);
