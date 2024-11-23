@@ -5,13 +5,14 @@ import Image from 'next/image';
 import { PrimaryButton, SecondaryButton, IconButton } from '@/app/ui/buttons';
 import { defaultAvatar, listIcon, logoutIcon } from '@/app/assets/media';
 import ReservationItem from '@/app/ui/reservationItem';
-import RESERVATIONS from '@/app/store/reservations';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/app/lib/auth/authContext';
+import { useReservation } from '@/app/lib/reservation/reservationContext';
 
 export default function Profile() {
   const router = useRouter();
   const { isAuthenticated, user, logout } = useAuth();
+  const { userReservations } = useReservation();
 
   function handleLogout() {
     router.push('/');
@@ -50,12 +51,12 @@ export default function Profile() {
             <h1>Раді вітати, {user.firstName}!</h1>
             <div className={styles.header}>
               <p className={styles.title}>Ваші нещодавні бронювання</p>
-              <p className={styles.count}>{RESERVATIONS.length}/3</p>
+              <p className={styles.count}>{userReservations.length}/3</p>
             </div>
             <div className={styles.reservations}>
               <p>Ваші бронювання</p>
               <ul className={styles.reservationsList}>
-                {RESERVATIONS.map((reservation) => (
+                {userReservations.map((reservation) => (
                   <ReservationItem
                     key={reservation.id}
                     reservation={reservation}

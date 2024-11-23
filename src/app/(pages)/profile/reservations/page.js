@@ -1,13 +1,16 @@
+'use client';
 import styles from './page.module.css';
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { listIcon } from '@/app/assets/media';
-import RESERVATIONS from '@/app/store/reservations';
 import ReservationItem from '@/app/ui/reservationItem';
 import { CtaButton } from '@/app/ui/buttons';
+import { useReservation } from '@/app/lib/reservation/reservationContext';
 
 export default function Reservations() {
+  const { userReservations } = useReservation();
+
   return (
     <main className={styles.main}>
       <section className={styles.reservations}>
@@ -18,7 +21,7 @@ export default function Reservations() {
         <div className={styles.listContainer}>
           <p>Ваші бронювання</p>
           <ul className={styles.reservationsList}>
-            {RESERVATIONS.map((reservation) => (
+            {userReservations.map((reservation) => (
               <React.Fragment key={reservation.id}>
                 <ReservationItem reservation={reservation} />
                 <div className={styles.cta}>

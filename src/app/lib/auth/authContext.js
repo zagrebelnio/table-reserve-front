@@ -36,6 +36,7 @@ export function AuthProvider({ children }) {
   const handleLogout = () => {
     localStorage.removeItem('authToken');
     localStorage.removeItem('userData');
+    window.dispatchEvent(new StorageEvent('storage'));
     setAuthState({
       isAuthenticated: false,
       user: null,
