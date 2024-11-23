@@ -3,9 +3,9 @@ import Link from 'next/link';
 import styles from './page.module.css';
 import StepProgress from '@/app/ui/stepProgress';
 import ReservationItem from '@/app/ui/reservationItem';
-import RESERVATIONS from '@/app/store/reservations';
 import { useState } from 'react';
 import { CtaButton } from '@/app/ui/buttons';
+import { useReservation } from '@/app/lib/reservation/reservationContext';
 
 export default function CancelReservation() {
   const steps = [
@@ -20,6 +20,7 @@ export default function CancelReservation() {
   ];
 
   const [currentStep, setCurrentStep] = useState(1);
+  const { userReservations } = useReservation();
 
   return (
     <main className={styles.main}>
@@ -35,7 +36,7 @@ export default function CancelReservation() {
           <div className={styles.reservationsContainer}>
             <p>Ваші бронювання</p>
             <ul className={styles.reservationsList}>
-              {RESERVATIONS.map((reservation) => (
+              {userReservations.map((reservation) => (
                 <li key={reservation.id} className={styles.reservationItem}>
                   <ReservationItem reservation={reservation} />
                   <CtaButton onClick={() => setCurrentStep(2)} type="delete">
