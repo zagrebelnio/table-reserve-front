@@ -6,6 +6,7 @@ import ReservationForm from '@/app/ui/reservationForm';
 import { useState } from 'react';
 import { reservationService } from '@/app/lib/reservation/reservationService';
 import { CtaButton } from '@/app/ui/buttons';
+import { useReservation } from '@/app/lib/reservation/reservationContext';
 
 export default function NewReservation() {
   const steps = [
@@ -25,6 +26,8 @@ export default function NewReservation() {
     capacity: 1,
   });
   const [tables, setTables] = useState([]);
+
+  const { setUserReservations } = useReservation();
 
   const handleSubmit = async (data) => {
     try {
@@ -52,6 +55,10 @@ export default function NewReservation() {
         tables[0].id
       );
       console.log('Reservation confirmed:', response);
+      const updatedReservations = await reservationService.getUserReservations(
+        token
+      );
+      setUserReservations(updatedReservations);
     } catch (error) {
       console.error('Failed to reserve:', error);
     }

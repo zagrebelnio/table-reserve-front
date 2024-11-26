@@ -33,7 +33,9 @@ export function ReservationProvider({ children }) {
   }, []);
 
   return (
-    <ReservationContext.Provider value={{ userReservations }}>
+    <ReservationContext.Provider
+      value={{ userReservations, setUserReservations }}
+    >
       {children}
     </ReservationContext.Provider>
   );
