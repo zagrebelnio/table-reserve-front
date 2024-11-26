@@ -2,16 +2,16 @@
 import { CtaButton } from './buttons';
 import styles from './reservationForm.module.css';
 import { useState } from 'react';
+import formatDate from '../util/formatDate';
 
 export default function ReservationForm({ ...props }) {
   const [formData, setFormData] = useState({
-    date: new Date().toISOString().split('T')[0],
-    time: '12:00',
+    date: new Date(),
     capacity: 1,
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: new Date(e.target.value) });
   };
 
   return (
@@ -21,20 +21,10 @@ export default function ReservationForm({ ...props }) {
           <label htmlFor="date">Оберіть дату бронювання</label>
           <input
             onChange={handleChange}
-            value={formData.date}
+            value={formatDate(formData.date)}
             name="date"
             id="date"
-            type="date"
-          />
-        </div>
-        <div className={styles.inputContainer}>
-          <label htmlFor="time">Від коли?</label>
-          <input
-            onChange={handleChange}
-            value={formData.time}
-            id="time"
-            name="time"
-            type="time"
+            type="datetime-local"
           />
         </div>
         <div className={styles.inputContainer}>
