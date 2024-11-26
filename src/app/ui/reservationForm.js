@@ -4,18 +4,28 @@ import styles from './reservationForm.module.css';
 import { useState } from 'react';
 import formatDate from '../util/formatDate';
 
-export default function ReservationForm({ ...props }) {
+export default function ReservationForm({ onSubmit, ...props }) {
   const [formData, setFormData] = useState({
     date: new Date(),
     capacity: 1,
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: new Date(e.target.value) });
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: name === 'date' ? new Date(value) : value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(formData);
   };
 
   return (
-    <form className={styles.form} {...props}>
+    <form className={styles.form} onSubmit={handleSubmit} {...props}>
       <div className={styles.container}>
         <div className={styles.inputContainer}>
           <label htmlFor="date">Оберіть дату бронювання</label>
