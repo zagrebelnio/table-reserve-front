@@ -51,7 +51,7 @@ export default function Profile() {
             <h1>Раді вітати, {user.firstName}!</h1>
             <div className={styles.header}>
               <p className={styles.title}>Ваші нещодавні бронювання</p>
-              <p className={styles.count}>{userReservations.length}/3</p>
+              <p className={styles.count}>{userReservations.length}</p>
             </div>
             <div className={styles.reservations}>
               <p>Ваші бронювання</p>

@@ -25,9 +25,6 @@ export default function Reservations() {
               <React.Fragment key={reservation.id}>
                 <ReservationItem reservation={reservation} />
                 <div className={styles.cta}>
-                  <Link href="/reservation/edit">
-                    <CtaButton type="edit">Редагувати</CtaButton>
-                  </Link>
                   <CtaButton type="delete">Скасувати</CtaButton>
                 </div>
               </React.Fragment>
