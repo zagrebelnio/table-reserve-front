@@ -18,6 +18,10 @@ export default function NewReservation() {
       number: 2,
       title: 'Отримайте підтвердження',
     },
+    {
+      number: 3,
+      title: 'Ваше бронювання',
+    },
   ];
 
   const [currentStep, setCurrentStep] = useState(1);
@@ -26,8 +30,9 @@ export default function NewReservation() {
     capacity: 1,
   });
   const [tables, setTables] = useState([]);
+  const [error, setError] = useState(null);
 
-  const { setUserReservations } = useReservation();
+  const { setUserReservations, userReservations } = useReservation();
 
   const handleSubmit = async (data) => {
     try {
@@ -59,8 +64,11 @@ export default function NewReservation() {
         token
       );
       setUserReservations(updatedReservations);
+      setError(null);
     } catch (error) {
-      console.error('Failed to reserve:', error);
+      setError(error);
+    } finally {
+      setCurrentStep(3);
     }
   };
 
@@ -94,6 +102,18 @@ export default function NewReservation() {
               </CtaButton>
             </div>
           ))}
+        {currentStep === 3 && (
+          <div className={styles.result}>
+            <p>
+              {error
+                ? `Помилка: ${error.response.data}`
+                : 'Ваше бронювання підтверджено'}
+            </p>
+            <CtaButton type="delete" onClick={() => setCurrentStep(1)}>
+              Повернутися до деталей
+            </CtaButton>
+          </div>
+        )}
       </section>
     </main>
   );
