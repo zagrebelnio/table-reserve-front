@@ -6,6 +6,7 @@ import ReservationItem from '@/app/ui/reservationItem';
 import { useState } from 'react';
 import { CtaButton } from '@/app/ui/buttons';
 import { useReservation } from '@/app/lib/reservation/reservationContext';
+import { reservationService } from '@/app/lib/reservation/reservationService';
 
 export default function CancelReservation() {
   const steps = [
@@ -20,7 +21,22 @@ export default function CancelReservation() {
   ];
 
   const [currentStep, setCurrentStep] = useState(1);
-  const { userReservations } = useReservation();
+  const [error, setError] = useState(null);
+  const { userReservations, setUserReservations } = useReservation();
+
+  async function handleCancel(id) {
+    try {
+      const token = localStorage.getItem('authToken');
+      await reservationService.cancelReservation(token, id);
+      const updatedReservations = await reservationService.getUserReservations(
+        token
+      );
+      setUserReservations(updatedReservations);
+      setCurrentStep(2);
+    } catch (error) {
+      console.error('Error canceling reservation:', error);
+    }
+  }
 
   return (
     <main className={styles.main}>
@@ -37,18 +53,28 @@ export default function CancelReservation() {
             <p>Ваші бронювання</p>
             <ul className={styles.reservationsList}>
               {userReservations.map((reservation) => (
-                <li key={reservation.id} className={styles.reservationItem}>
+                <div key={reservation.id} className={styles.reservationItem}>
                   <ReservationItem reservation={reservation} />
-                  <CtaButton onClick={() => setCurrentStep(2)} type="delete">
+                  <CtaButton
+                    onClick={async () => await handleCancel(reservation.id)}
+                    type="delete"
+                  >
                     Скасувати
                   </CtaButton>
-                </li>
+                </div>
               ))}
             </ul>
           </div>
         )}
         {currentStep === 2 && (
-          <p className={styles.result}>Бронювання успішно видалено!</p>
+          <div className={styles.result}>
+            <p className={styles.result}>
+              {error ? `Помилка: ${error}` : 'Бронювання скасовано успішно.'}
+            </p>
+            <CtaButton type="delete" onClick={() => setCurrentStep(1)}>
+              Повернутися до скасування
+            </CtaButton>
+          </div>
         )}
       </section>
     </main>

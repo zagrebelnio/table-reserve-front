@@ -66,4 +66,22 @@ export const reservationService = {
       throw error;
     }
   },
+
+  async cancelReservation(token, reservationId) {
+    try {
+      const response = await axios.delete(`https://localhost:7174/booking`, {
+        params: {
+          bookingId: reservationId,
+        },
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
 };
