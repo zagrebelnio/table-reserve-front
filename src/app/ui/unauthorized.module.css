@@ -1,0 +1,19 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  padding: 200px 0;
+}
+
+.content h1 {
+  font-size: 40px;
+  font-weight: 500;
+  width: 690px;
+}
+
+.authorizationContainer {
+  display: flex;
+  gap: 10px;
+}

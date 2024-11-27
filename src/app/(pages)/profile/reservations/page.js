@@ -2,7 +2,6 @@
 import styles from './page.module.css';
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { listIcon } from '@/app/assets/media';
 import ReservationItem from '@/app/ui/reservationItem';
 import { CtaButton } from '@/app/ui/buttons';
