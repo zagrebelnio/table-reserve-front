@@ -6,10 +6,42 @@ import { PrimaryButton, SecondaryButton } from './buttons';
 import styles from './navbar.module.css';
 import { logoIcon, defaultAvatar } from '@/app/assets/media';
 import { useAuth } from '../lib/auth/authContext';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export default function Navbar() {
   const pathname = usePathname();
-  const { isAuthenticated, user } = useAuth();
+  const { isAuthenticated, user, loading } = useAuth();
+
+  const renderCta = () => {
+    if (loading) {
+      return <Skeleton width={250} height={50} />;
+    }
+
+    if (isAuthenticated) {
+      return (
+        <Link href="/profile">
+          <div className={styles.user}>
+            <Image src={defaultAvatar} alt="avatar" />
+            <p>
+              {user.firstName} {user.lastName}
+            </p>
+          </div>
+        </Link>
+      );
+    } else {
+      return (
+        <div className={styles.buttons}>
+          <Link href="/auth?mode=login">
+            <SecondaryButton>Увійти</SecondaryButton>
+          </Link>
+          <Link href="/auth?mode=signup">
+            <PrimaryButton>Зареєструватися</PrimaryButton>
+          </Link>
+        </div>
+      );
+    }
+  };
 
   return (
     <nav className={styles.navbar}>
@@ -48,26 +80,7 @@ export default function Navbar() {
           Контакти
         </Link>
       </div>
-      {!isAuthenticated && (
-        <div className={styles.buttons}>
-          <Link href="/auth?mode=login">
-            <SecondaryButton>Увійти</SecondaryButton>
-          </Link>
-          <Link href="/auth?mode=signup">
-            <PrimaryButton>Зареєструватися</PrimaryButton>
-          </Link>
-        </div>
-      )}
-      {isAuthenticated && (
-        <Link href="/profile">
-          <div className={styles.user}>
-            <Image src={defaultAvatar} alt="avatar" />
-            <p>
-              {user.firstName} {user.lastName}
-            </p>
-          </div>
-        </Link>
-      )}
+      {renderCta()}
     </nav>
   );
 }
