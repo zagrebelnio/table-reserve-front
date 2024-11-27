@@ -32,7 +32,7 @@ export default function NewReservation() {
   const [tables, setTables] = useState([]);
   const [error, setError] = useState(null);
 
-  const { setUserReservations, userReservations } = useReservation();
+  const { setUserReservations } = useReservation();
 
   const handleSubmit = async (data) => {
     try {

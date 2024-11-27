@@ -48,7 +48,10 @@ export default function CancelReservation() {
           </Link>
         </div>
         <StepProgress steps={steps} current={currentStep} />
-        {currentStep === 1 && (
+        {currentStep === 1 && userReservations.length === 0 && (
+          <p>Ви ще не забронювали жодного столика</p>
+        )}
+        {currentStep === 1 && userReservations.length > 0 && (
           <div className={styles.reservationsContainer}>
             <p>Ваші бронювання</p>
             <ul className={styles.reservationsList}>

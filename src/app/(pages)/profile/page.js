@@ -37,17 +37,24 @@ export default function Profile() {
             <p className={styles.title}>Ваші нещодавні бронювання</p>
             <p className={styles.count}>{userReservations.length}</p>
           </div>
-          <div className={styles.reservations}>
-            <p>Ваші бронювання</p>
-            <ul className={styles.reservationsList}>
-              {userReservations.map((reservation) => (
-                <ReservationItem
-                  key={reservation.id}
-                  reservation={reservation}
-                />
-              ))}
-            </ul>
-          </div>
+          {userReservations.length === 0 && (
+            <p className={styles.empty}>
+              На жаль, ви не маєте активних бронювань
+            </p>
+          )}
+          {userReservations.length > 0 && (
+            <div className={styles.reservations}>
+              <p>Ваші бронювання</p>
+              <ul className={styles.reservationsList}>
+                {userReservations.map((reservation) => (
+                  <ReservationItem
+                    key={reservation.id}
+                    reservation={reservation}
+                  />
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </section>
     </main>

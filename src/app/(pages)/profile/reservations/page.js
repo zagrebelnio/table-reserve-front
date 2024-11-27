@@ -17,19 +17,24 @@ export default function Reservations() {
           <Image src={listIcon} alt="list icon" />
           <h1>Ваші бронювання</h1>
         </div>
-        <div className={styles.listContainer}>
-          <p>Ваші бронювання</p>
-          <ul className={styles.reservationsList}>
-            {userReservations.map((reservation) => (
-              <React.Fragment key={reservation.id}>
-                <ReservationItem reservation={reservation} />
-                <div className={styles.cta}>
-                  <CtaButton type="delete">Скасувати</CtaButton>
-                </div>
-              </React.Fragment>
-            ))}
-          </ul>
-        </div>
+        {userReservations.length === 0 && (
+          <p className={styles.empty}>Ви ще не забронювали жодного столика</p>
+        )}
+        {userReservations.length > 0 && (
+          <div className={styles.listContainer}>
+            <p>Ваші бронювання</p>
+            <ul className={styles.reservationsList}>
+              {userReservations.map((reservation) => (
+                <React.Fragment key={reservation.id}>
+                  <ReservationItem reservation={reservation} />
+                  <div className={styles.cta}>
+                    <CtaButton type="delete">Скасувати</CtaButton>
+                  </div>
+                </React.Fragment>
+              ))}
+            </ul>
+          </div>
+        )}
       </section>
     </main>
   );
