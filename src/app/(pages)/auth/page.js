@@ -11,6 +11,7 @@ export default function Auth() {
   const router = useRouter();
   const mode = searchParams.get('mode');
   const { setAuthState } = useAuth();
+  const [error, setError] = useState(null);
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -21,6 +22,7 @@ export default function Auth() {
   });
 
   const handleChange = (e) => {
+    setError(null);
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -30,7 +32,7 @@ export default function Auth() {
       setAuthState({ isAuthenticated: true, user: userData, loading: false });
       router.push('/');
     } catch (error) {
-      console.error('Login error:', error);
+      setError(error.response.data.split('\n')[0].split(':')[1].trim());
     }
   };
 
@@ -44,7 +46,7 @@ export default function Auth() {
       setAuthState({ isAuthenticated: true, user: userData, loading: false });
       router.push('/');
     } catch (error) {
-      console.error('Registration error:', error);
+      setError(error.response.data.split('\n')[0].split(':')[1].trim());
     }
   };
 
@@ -115,6 +117,7 @@ export default function Auth() {
           onChange={handleChange}
           required
         />
+        {error && <p className={styles.error}>{error}</p>}
         <PrimaryButton type="submit">Підтвердити</PrimaryButton>
       </form>
     </main>
