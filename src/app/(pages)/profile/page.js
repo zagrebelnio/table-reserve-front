@@ -11,7 +11,7 @@ import { useReservation } from '@/app/lib/reservation/reservationContext';
 
 export default function Profile() {
   const router = useRouter();
-  const { isAuthenticated, user, logout } = useAuth();
+  const { user, logout } = useAuth();
   const { userReservations } = useReservation();
 
   function handleLogout() {

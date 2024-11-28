@@ -47,6 +47,7 @@ export default function NewReservation() {
       setCurrentStep(2);
     } catch (error) {
       console.error('Failed to submit reservation:', error);
+      setError(error);
     }
   };
 
@@ -66,6 +67,7 @@ export default function NewReservation() {
       setUserReservations(updatedReservations);
       setError(null);
     } catch (error) {
+      console.error('Failed to confirm reservation:', error);
       setError(error);
     } finally {
       setCurrentStep(3);

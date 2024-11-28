@@ -1,6 +1,8 @@
 import styles from './reservationItem.module.css';
 
 export default function ReservationItem({ reservation }) {
+  console.log(new Date(reservation.date));
+
   return (
     <li className={styles.item}>
       <div className={styles.column}>
@@ -12,7 +14,10 @@ export default function ReservationItem({ reservation }) {
       <div className={styles.column}>
         <p className={styles.title}>Час початку</p>
         <p className={styles.value}>
-          {new Date(reservation.date).toLocaleTimeString().slice(0, 5)}
+          {new Date(reservation.date).toLocaleTimeString('uk', {
+            hour: '2-digit',
+            minute: '2-digit',
+          })}
         </p>
       </div>
       <div className={styles.column}>

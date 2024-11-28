@@ -21,7 +21,16 @@ export default function ReservationForm({ onSubmit, ...props }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(formData);
+
+    const adjustedDate = new Date(formData.date);
+    const utcDate = new Date(
+      adjustedDate.getTime() - adjustedDate.getTimezoneOffset() * 60000
+    );
+
+    onSubmit({
+      ...formData,
+      date: utcDate.toISOString(),
+    });
   };
 
   return (
