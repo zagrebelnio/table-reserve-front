@@ -50,9 +50,22 @@
 }
 
 .result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+
+.result p {
   font-size: 40px;
   font-weight: 500;
   color: var(--fg-color);
   margin-top: 50px;
-  width: 700px;
+  width: 900px;
+  text-align: center;
+}
+
+.result button {
+  padding: 20px 60px;
+  font-size: 32px;
 }

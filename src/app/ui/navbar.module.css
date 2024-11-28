@@ -1,15 +1,22 @@
 .navbar {
-  width: 100%;
-  height: var(--navbar-height);
   display: flex;
   align-items: center;
-  padding: 40px 50px 0 50px;
   justify-content: space-between;
+  width: 100%;
+  height: var(--navbar-height);
+  padding: 40px 50px 0 50px;
   position: fixed;
   background-color: var(--bg-color);
+  z-index: 1;
 }
 
-.navbar > a {
+.links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.links a {
   color: var(--regular-color);
   text-underline-offset: 6px;
   padding: 8px 12px;
