@@ -1,9 +1,5 @@
 'use client';
-import {
-  GradientButton,
-  PrimaryButton,
-  SecondaryButton,
-} from '@/app/ui/buttons';
+import { GradientButton, PrimaryButton, SecondaryButton } from '@/ui/buttons';
 import styles from './page.module.css';
 import Link from 'next/link';
 

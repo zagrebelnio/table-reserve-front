@@ -1,8 +1,8 @@
 import { Poppins } from 'next/font/google';
 import './globals.css';
-import Navbar from '@/app/ui/navbar';
-import { AuthProvider } from './lib/auth/authContext';
-import { ReservationProvider } from './lib/reservation/reservationContext';
+import Navbar from '@/ui/navbar';
+import { AuthProvider } from '@/lib/auth/authContext';
+import { ReservationProvider } from '@/lib/reservation/reservationContext';
 
 const poppins = Poppins({
   subsets: ['latin'],

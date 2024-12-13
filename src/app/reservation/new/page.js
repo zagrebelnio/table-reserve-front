@@ -1,12 +1,12 @@
 'use client';
 import Link from 'next/link';
 import styles from './page.module.css';
-import StepProgress from '@/app/ui/stepProgress';
-import ReservationForm from '@/app/ui/reservationForm';
+import StepProgress from '@/ui/stepProgress';
+import ReservationForm from '@/ui/reservationForm';
 import { useState } from 'react';
-import { reservationService } from '@/app/lib/reservation/reservationService';
-import { CtaButton } from '@/app/ui/buttons';
-import { useReservation } from '@/app/lib/reservation/reservationContext';
+import { reservationService } from '@/lib/reservation/reservationService';
+import { CtaButton } from '@/ui/buttons';
+import { useReservation } from '@/lib/reservation/reservationContext';
 
 export default function NewReservation() {
   const steps = [

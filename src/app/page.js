@@ -10,7 +10,7 @@ import {
   timeIcon,
   tableIcon,
   doneIcon,
-} from '@/app/assets/media';
+} from '@/assets/media';
 import Link from 'next/link';
 
 export default function Home() {

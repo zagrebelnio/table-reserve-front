@@ -2,10 +2,10 @@
 import styles from './page.module.css';
 import React from 'react';
 import Image from 'next/image';
-import { listIcon } from '@/app/assets/media';
-import ReservationItem from '@/app/ui/reservationItem';
-import { CtaButton } from '@/app/ui/buttons';
-import { useReservation } from '@/app/lib/reservation/reservationContext';
+import { listIcon } from '@/assets/media';
+import ReservationItem from '@/ui/reservationItem';
+import { CtaButton } from '@/ui/buttons';
+import { useReservation } from '@/lib/reservation/reservationContext';
 import Link from 'next/link';
 
 export default function Reservations() {

@@ -1,7 +1,7 @@
 import { PrimaryButton } from '../../ui/buttons';
 import styles from './page.module.css';
 import Image from 'next/image';
-import { tableIcon, detailsIcon, likeIcon } from '@/app/assets/media';
+import { tableIcon, detailsIcon, likeIcon } from '@/assets/media';
 import Link from 'next/link';
 
 export default function HowItWorks() {

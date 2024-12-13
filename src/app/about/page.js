@@ -1,10 +1,12 @@
 import styles from './page.module.css';
 import Image from 'next/image';
-import inquiryIcon from '@/app/assets/icons/inquiry.svg';
-import trophyIcon from '@/app/assets/icons/trophy.svg';
-import qaIcon from '@/app/assets/icons/qa.svg';
-import countdownIcon from '@/app/assets/icons/countdown.svg';
-import restaurantHallImage from '@/app/assets/images/restaurant-hall.png';
+import {
+  inquiryIcon,
+  trophyIcon,
+  qaIcon,
+  countdownIcon,
+  restaurantHallImage,
+} from '@/assets/media';
 
 export default function About() {
   return (

@@ -1,10 +1,10 @@
 'use client';
-import { PrimaryButton } from '@/app/ui/buttons';
+import { PrimaryButton } from '@/ui/buttons';
 import styles from './page.module.css';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { authService } from '@/app/lib/auth/authService';
-import { useAuth } from '@/app/lib/auth/authContext';
+import { authService } from '@/lib/auth/authService';
+import { useAuth } from '@/lib/auth/authContext';
 
 export default function Auth() {
   const searchParams = useSearchParams();

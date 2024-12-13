@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { PrimaryButton, SecondaryButton } from './buttons';
 import styles from './navbar.module.css';
-import { logoIcon, defaultAvatar } from '@/app/assets/media';
+import { logoIcon, defaultAvatar } from '@/assets/media';
 import { useAuth } from '../lib/auth/authContext';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';

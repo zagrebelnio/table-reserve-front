@@ -8,7 +8,7 @@ import {
   facebookIcon,
   instagramIcon,
   twitterIcon,
-} from '@/app/assets/media';
+} from '@/assets/media';
 import SocialMedial from '../../ui/socialMedia';
 
 export default function Contacts() {

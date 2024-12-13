@@ -2,12 +2,12 @@
 import styles from './page.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
-import { IconButton } from '@/app/ui/buttons';
-import { defaultAvatar, listIcon, logoutIcon } from '@/app/assets/media';
-import ReservationItem from '@/app/ui/reservationItem';
+import { IconButton } from '@/ui/buttons';
+import { defaultAvatar, listIcon, logoutIcon } from '@/assets/media';
+import ReservationItem from '@/ui/reservationItem';
 import { useRouter } from 'next/navigation';
-import { useAuth } from '@/app/lib/auth/authContext';
-import { useReservation } from '@/app/lib/reservation/reservationContext';
+import { useAuth } from '@/lib/auth/authContext';
+import { useReservation } from '@/lib/reservation/reservationContext';
 
 export default function Profile() {
   const router = useRouter();
