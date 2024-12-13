@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { reservationService } from '@/lib/reservation/reservationService';
 import { CtaButton } from '@/ui/buttons';
 import { useReservation } from '@/lib/reservation/reservationContext';
+import { useSession } from 'next-auth/react';
 
 export default function NewReservation() {
   const steps = [
@@ -24,6 +25,9 @@ export default function NewReservation() {
     },
   ];
 
+  const { data: session } = useSession();
+  const token = session?.accessToken;
+
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     date: new Date(),
@@ -36,7 +40,6 @@ export default function NewReservation() {
 
   const handleSubmit = async (data) => {
     try {
-      const token = localStorage.getItem('authToken');
       const response = await reservationService.getFreeTables(
         token,
         data.date,
@@ -53,7 +56,6 @@ export default function NewReservation() {
 
   const handleReserve = async () => {
     try {
-      const token = localStorage.getItem('authToken');
       const response = await reservationService.reserveTable(
         token,
         formData.date,

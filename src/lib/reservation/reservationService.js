@@ -1,17 +1,13 @@
-import axios from 'axios';
+import axios from '@/lib/axios/axiosInstance';
 
 export const reservationService = {
   async getUserReservations(token) {
     try {
-      const response = await axios.get(
-        'https://localhost:7174/booking/byUserId',
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+      const response = await axios.get('/booking/byUserId', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       return response.data;
     } catch (error) {
@@ -24,19 +20,15 @@ export const reservationService = {
 
   async getFreeTables(token, date, numberOfGuests) {
     try {
-      const response = await axios.get(
-        'https://localhost:7174/table/free-tables',
-        {
-          params: {
-            date,
-            numberOfGuests,
-          },
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+      const response = await axios.get('/table/free-tables', {
+        params: {
+          date,
+          numberOfGuests,
+        },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       return response.data;
     } catch (error) {
@@ -47,7 +39,7 @@ export const reservationService = {
   async reserveTable(token, date, numberOfGuests, tableId) {
     try {
       const response = await axios.post(
-        'https://localhost:7174/booking',
+        '/booking',
         {
           date,
           numberOfGuests,
@@ -56,7 +48,6 @@ export const reservationService = {
         {
           headers: {
             Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json',
           },
         }
       );
@@ -69,13 +60,12 @@ export const reservationService = {
 
   async cancelReservation(token, reservationId) {
     try {
-      const response = await axios.delete(`https://localhost:7174/booking`, {
+      const response = await axios.delete(`/booking`, {
         params: {
           bookingId: reservationId,
         },
         headers: {
           Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
         },
       });
 

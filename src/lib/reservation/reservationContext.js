@@ -1,40 +1,53 @@
 'use client';
 import { createContext, useContext, useState, useEffect } from 'react';
 import { reservationService } from './reservationService';
+import { useSession } from 'next-auth/react';
 
 const ReservationContext = createContext({});
 
 export function ReservationProvider({ children }) {
+  const { data: session, status } = useSession();
   const [userReservations, setUserReservations] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const checkUserReservations = async () => {
-      const token = localStorage.getItem('authToken');
-
-      if (!token) {
-        console.log([]);
-        setUserReservations([]);
+    const fetchReservations = async () => {
+      if (status === 'loading') {
+        setLoading(true);
         return;
       }
 
+      if (!session?.accessToken) {
+        setUserReservations([]);
+        setLoading(false);
+        setError(null);
+        return;
+      }
+
+      setLoading(true);
+      setError(null);
+
       try {
         const reservations = await reservationService.getUserReservations(
-          token
+          session.accessToken
         );
         setUserReservations(reservations);
-      } catch (error) {
-        console.error('Error fetching user reservations:', error);
+        setLoading(false);
+      } catch (err) {
+        console.error('Error fetching user reservations:', err);
+        setUserReservations([]);
+        setError('Failed to fetch reservations');
+        setLoading(false);
       }
     };
 
-    checkUserReservations();
-    window.addEventListener('storage', checkUserReservations);
-    return () => window.removeEventListener('storage', checkUserReservations);
-  }, []);
+    fetchReservations();
+  }, [session, status]);
 
   return (
     <ReservationContext.Provider
-      value={{ userReservations, setUserReservations }}
+      value={{ userReservations, setUserReservations, loading, error }}
     >
       {children}
     </ReservationContext.Provider>

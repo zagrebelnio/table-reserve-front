@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { CtaButton } from '@/ui/buttons';
 import { useReservation } from '@/lib/reservation/reservationContext';
 import { reservationService } from '@/lib/reservation/reservationService';
+import { useSession } from 'next-auth/react';
 
 export default function CancelReservation() {
   const steps = [
@@ -20,13 +21,15 @@ export default function CancelReservation() {
     },
   ];
 
+  const { data: session } = useSession();
+  const token = session?.accessToken;
+
   const [currentStep, setCurrentStep] = useState(1);
   const [error, setError] = useState(null);
   const { userReservations, setUserReservations } = useReservation();
 
   async function handleCancel(id) {
     try {
-      const token = localStorage.getItem('authToken');
       await reservationService.cancelReservation(token, id);
       const updatedReservations = await reservationService.getUserReservations(
         token
