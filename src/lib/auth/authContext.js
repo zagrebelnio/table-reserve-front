@@ -1,52 +1,60 @@
 'use client';
 import { createContext, useContext, useState, useEffect } from 'react';
+import { authService } from '@/lib/auth/authService';
+import { signOut, useSession } from 'next-auth/react';
 
 const AuthContext = createContext({});
 
 export function AuthProvider({ children }) {
-  const [authState, setAuthState] = useState({
-    isAuthenticated: false,
-    user: null,
-    loading: true,
-  });
+  const { data: session, status } = useSession();
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const fetchUserData = async () => {
+    if (!session?.accessToken) {
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      const userData = await authService.getUserData(session.accessToken);
+      setUser(userData);
+    } catch (error) {
+      setError(error.message || 'Failed to fetch user data');
+      setUser(null);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  async function logout() {
+    try {
+      await signOut({ callbackUrl: '/' });
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   useEffect(() => {
-    const checkAuthStatus = () => {
-      const token = localStorage.getItem('authToken');
-      const userData = localStorage.getItem('userData');
+    if (status === 'loading') {
+      setLoading(true);
+      return;
+    }
 
-      if (token && userData) {
-        try {
-          const user = JSON.parse(userData);
-          setAuthState({ isAuthenticated: true, user, loading: false });
-        } catch (error) {
-          console.error('Error parsing user data:', error);
-          handleLogout();
-        }
-      } else {
-        setAuthState({ isAuthenticated: false, user: null, loading: false });
-      }
-    };
-
-    checkAuthStatus();
-    window.addEventListener('storage', checkAuthStatus);
-    return () => window.removeEventListener('storage', checkAuthStatus);
-  }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem('authToken');
-    localStorage.removeItem('userData');
-    window.dispatchEvent(new StorageEvent('storage'));
-    setAuthState({
-      isAuthenticated: false,
-      user: null,
-      loading: false,
-    });
-  };
+    if (session?.accessToken) {
+      fetchUserData();
+    } else {
+      setUser(null);
+      setLoading(false);
+    }
+  }, [session, status]);
 
   return (
     <AuthContext.Provider
-      value={{ ...authState, logout: handleLogout, setAuthState }}
+      value={{ user, loading, error, refetchUser: fetchUserData, logout }}
     >
       {children}
     </AuthContext.Provider>

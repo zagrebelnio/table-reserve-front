@@ -1,8 +1,10 @@
 import { Poppins } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/ui/navbar';
-import { AuthProvider } from '@/lib/auth/authContext';
-import { ReservationProvider } from '@/lib/reservation/reservationContext';
+import { Providers } from './providers';
+// import { AuthProvider } from '@/lib/auth/authContext';
+// import { SessionProvider } from 'next-auth/react';
+// import { ReservationProvider } from '@/lib/reservation/reservationContext';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -23,10 +25,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${poppins.variable}`}>
-        <AuthProvider>
+        <Providers>
           <Navbar />
-          <ReservationProvider>{children}</ReservationProvider>
-        </AuthProvider>
+          {children}
+        </Providers>
       </body>
     </html>
   );

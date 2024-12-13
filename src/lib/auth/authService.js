@@ -1,50 +1,23 @@
-import axios from 'axios';
+import axios from '@/lib/axios/axiosInstance';
 
 export const authService = {
-  async login(credentials) {
+  async register(userData) {
     try {
-      const loginResponse = await axios.post(
-        'https://localhost:7174/auth/login',
-        credentials,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+      const response = await axios.post('/auth/register', userData);
 
-      const token = loginResponse.data;
-
-      const userDataResponse = await axios.get('https://localhost:7174/user', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-      });
-
-      const userData = userDataResponse.data;
-
-      localStorage.setItem('authToken', token);
-      localStorage.setItem('userData', JSON.stringify(userData));
-      window.dispatchEvent(new StorageEvent('storage'));
-
-      return { token, userData };
+      return response.data;
     } catch (error) {
       throw error;
     }
   },
 
-  async register(userData) {
+  async getUserData(token) {
     try {
-      const response = await axios.post(
-        'https://localhost:7174/auth/register',
-        userData,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+      const response = await axios.get('/user', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       return response.data;
     } catch (error) {

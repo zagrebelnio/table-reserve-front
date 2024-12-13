@@ -1,16 +1,16 @@
 'use client';
+
 import { PrimaryButton } from '@/ui/buttons';
 import styles from './page.module.css';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { authService } from '@/lib/auth/authService';
-import { useAuth } from '@/lib/auth/authContext';
+import { signIn } from 'next-auth/react';
 
 export default function Auth() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const mode = searchParams.get('mode');
-  const { setAuthState } = useAuth();
   const [error, setError] = useState(null);
 
   const [formData, setFormData] = useState({
@@ -27,32 +27,43 @@ export default function Auth() {
   };
 
   const handleLogin = async (credentials) => {
-    try {
-      const { userData } = await authService.login(credentials);
-      setAuthState({ isAuthenticated: true, user: userData, loading: false });
+    const result = await signIn('credentials', {
+      redirect: false,
+      userName: credentials.userName,
+      password: credentials.password,
+    });
+
+    if (result.error) {
+      setError(result.error);
+    } else {
       router.push('/');
-    } catch (error) {
-      setError(error.response.data.split('\n')[0].split(':')[1].trim());
     }
   };
 
   const handleSignup = async (userData) => {
     try {
       await authService.register(userData);
-      await authService.login({
+      const result = await signIn('credentials', {
+        redirect: false,
         userName: userData.userName,
         password: userData.password,
       });
-      setAuthState({ isAuthenticated: true, user: userData, loading: false });
-      router.push('/');
+
+      if (result.error) {
+        setError(result.error);
+      } else {
+        router.push('/');
+      }
     } catch (error) {
-      setError(error.response.data.split('\n')[0].split(':')[1].trim());
+      const msg =
+        error.response?.data?.split('\n')[0].split(':')[1]?.trim() ??
+        'Registration failed';
+      setError(msg);
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     mode === 'login'
       ? handleLogin({
           userName: formData.userName,
@@ -87,7 +98,7 @@ export default function Auth() {
             />
           </>
         )}
-        <label htmlFor="email">Введіть Ваш нікнейм</label>
+        <label htmlFor="userName">Введіть Ваш нікнейм</label>
         <input
           type="text"
           id="userName"

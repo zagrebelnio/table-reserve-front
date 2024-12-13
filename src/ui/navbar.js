@@ -5,20 +5,20 @@ import Link from 'next/link';
 import { PrimaryButton, SecondaryButton } from './buttons';
 import styles from './navbar.module.css';
 import { logoIcon, defaultAvatar } from '@/assets/media';
-import { useAuth } from '../lib/auth/authContext';
+import { useAuth } from '@/lib/auth/authContext';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
 export default function Navbar() {
   const pathname = usePathname();
-  const { isAuthenticated, user, loading } = useAuth();
+  const { user, loading, error } = useAuth();
 
   const renderCta = () => {
     if (loading) {
       return <Skeleton width={250} height={50} />;
     }
 
-    if (isAuthenticated) {
+    if (user) {
       return (
         <Link href="/profile">
           <div className={styles.user}>
