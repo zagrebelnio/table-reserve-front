@@ -30,7 +30,7 @@ export function ReservationProvider({ children }) {
 
       try {
         const reservations = await reservationService.getUserReservations(
-          session.accessToken
+          session?.accessToken
         );
         setUserReservations(reservations);
         setLoading(false);
