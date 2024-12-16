@@ -23,6 +23,17 @@ const TablesPage = () => {
     }
   };
 
+  const handleDelete = async (tableId) => {
+    setError(null);
+    try {
+      await tableService.deleteTable(token, tableId);
+      fetchTables();
+    } catch (err) {
+      console.error('Error deleting table:', err);
+      setError('Failed to delete table');
+    }
+  };
+
   useEffect(() => {
     fetchTables();
   }, []);
@@ -47,7 +58,7 @@ const TablesPage = () => {
               <td>{table.number}</td>
               <td>{table.capacity}</td>
               <td>
-                <button onClick={() => deleteTable(table.id)}>Delete</button>
+                <button onClick={() => handleDelete(table.id)}>Delete</button>
               </td>
             </tr>
           ))}

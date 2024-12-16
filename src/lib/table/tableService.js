@@ -17,7 +17,7 @@ export const tableService = {
 
   async deleteTable(token, tableId) {
     try {
-      await axios.delete(`/table`, {
+      await axios.delete('/table', {
         params: {
           tableId,
         },

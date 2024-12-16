@@ -1,21 +1,29 @@
 'use client';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import BookingByDateForm from '@/ui/bookingByDateForm';
+import { reservationService } from '@/lib/reservation/reservationService';
+import { useSession } from 'next-auth/react';
 
 const BookingsPage = () => {
+  const { data: session, status } = useSession();
+  const token = session?.accessToken || '';
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const fetchBookings = async (date = null) => {
+    if (!token) {
+      setBookings([]);
+      setLoading(false);
+      setError(null);
+      return;
+    }
     setLoading(true);
     try {
-      const response = date
-        ? await axios.get(`https://localhost:7174/booking/${date}`)
-        : await axios.get('https://localhost:7174/booking');
-      setBookings(response.data);
+      const data = await reservationService.getReservations(token, date);
+      setBookings(data);
     } catch (err) {
+      console.error('Error fetching bookings:', err);
       setError('Failed to fetch bookings');
     } finally {
       setLoading(false);
@@ -24,7 +32,7 @@ const BookingsPage = () => {
 
   useEffect(() => {
     fetchBookings();
-  }, []);
+  }, [token]);
 
   return (
     <main>
@@ -35,7 +43,8 @@ const BookingsPage = () => {
       <table>
         <thead>
           <tr>
-            <th>ID</th>
+            <th>User</th>
+            <th>Email</th>
             <th>Date</th>
             <th>Time</th>
             <th>Table</th>
@@ -45,11 +54,19 @@ const BookingsPage = () => {
         <tbody>
           {bookings.map((booking) => (
             <tr key={booking.id}>
-              <td>{booking.id}</td>
-              <td>{booking.date}</td>
-              <td>{booking.time}</td>
-              <td>{booking.table}</td>
-              <td>{booking.guests}</td>
+              <td>
+                {booking.firstName} {booking.lastName}
+              </td>
+              <td>{booking.email}</td>
+              <td>{new Date(booking.date).toLocaleDateString('uk')}</td>
+              <td>
+                {new Date(booking.date).toLocaleTimeString('uk', {
+                  hour: '2-digit',
+                  minute: '2-digit',
+                })}
+              </td>
+              <td>{booking.number}</td>
+              <td>{booking.numberOfGuests}</td>
             </tr>
           ))}
         </tbody>

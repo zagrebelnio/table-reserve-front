@@ -74,4 +74,22 @@ export const reservationService = {
       throw error;
     }
   },
+
+  async getReservations(token, date) {
+    try {
+      const url = date ? `/booking/${date}` : '/booking';
+      const response = await axios.get(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      if (error.response.data.includes('No bookings found')) {
+        return [];
+      }
+      console.error('Error fetching reservations:', error);
+      throw error;
+    }
+  },
 };
