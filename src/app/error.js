@@ -1,7 +1,7 @@
 'use client';
 import styles from './error.module.css';
 import { useEffect } from 'react';
-import { PrimaryButton } from '@/app/ui/buttons';
+import { PrimaryButton } from '@/ui/buttons';
 
 export default function Error({ error, reset }) {
   useEffect(() => {

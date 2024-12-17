@@ -1,0 +1,109 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+.reservation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.reservation h1 {
+  padding: 10px 32px;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--bg-color);
+  background-color: var(--title-color);
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.reservation p {
+  font-size: 24px;
+  font-weight: 500;
+  max-width: 760px;
+  color: var(--fg-color);
+  line-height: 1.6;
+}
+
+.cta {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.cta a button {
+  width: 100%;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+  .reservation h1 {
+    font-size: 28px;
+  }
+
+  .reservation p {
+    font-size: 20px;
+    max-width: 600px;
+  }
+
+  .cta {
+    max-width: 350px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .reservation h1 {
+    font-size: 24px;
+    padding: 8px 24px;
+  }
+
+  .reservation p {
+    font-size: 18px;
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .cta {
+    gap: 15px;
+    max-width: 100%;
+    padding: 0 15px;
+  }
+
+  .cta a button {
+    font-size: 16px;
+    padding: 12px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .reservation h1 {
+    font-size: 20px;
+    padding: 6px 20px;
+  }
+
+  .reservation p {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .cta {
+    gap: 10px;
+    padding: 0 10px;
+  }
+
+  .cta a button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

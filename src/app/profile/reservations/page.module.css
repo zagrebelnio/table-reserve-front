@@ -1,0 +1,145 @@
+.reservations {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 50px 100px;
+}
+
+.header {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.header h1 {
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--fg-color);
+}
+
+.header img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.actions {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.listContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  border: 1px solid var(--fg-color);
+  border-radius: 30px;
+  padding: 30px;
+  background-color: var(--bg-reservation-color);
+}
+
+.reservationsList {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.empty {
+  font-size: 18px;
+  color: var(--regular-light-color);
+  text-align: center;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+  .reservations {
+    padding: 40px 50px;
+  }
+
+  .header h1 {
+    font-size: 28px;
+  }
+
+  .listContainer {
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .actions {
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .reservationsList {
+    gap: 15px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .reservations {
+    padding: 30px 20px;
+    gap: 20px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .header h1 {
+    font-size: 24px;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .listContainer {
+    padding: 15px;
+    gap: 20px;
+    border-radius: 15px;
+  }
+
+  .reservationsList {
+    gap: 10px;
+  }
+
+  .empty {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .reservations {
+    padding: 20px 10px;
+    gap: 15px;
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .header img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .listContainer {
+    padding: 10px;
+    gap: 15px;
+  }
+
+  .empty {
+    font-size: 14px;
+  }
+}

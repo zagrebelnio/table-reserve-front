@@ -1,0 +1,154 @@
+.main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.content {
+  display: flex;
+  gap: 80px;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+}
+
+.text h1 {
+  padding: 10px 32px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--bg-color);
+  background-color: var(--title-color);
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.text h2 {
+  font-size: 38px;
+  max-width: 575px;
+  font-weight: 500;
+  color: var(--text-color);
+  line-height: 130%;
+  margin-top: 20px;
+}
+
+.featuresList {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.featuresItem {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.featuresItem img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  background-color: var(--bg-icon-color);
+  padding: 12px;
+  border-radius: 16px;
+}
+
+.featuresItemText {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.featuresItemText h3 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.featuresItemText p {
+  font-size: 16px;
+  color: var(--regular-color);
+}
+
+@media screen and (max-width: 1024px) {
+  .content {
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .featuresList {
+    margin-top: 30px;
+  }
+
+  .featuresItem {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .featuresItem img {
+    width: 45px;
+    height: 45px;
+    padding: 10px;
+  }
+
+  .featuresItemText {
+    max-width: 100%;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .text h2 {
+    font-size: 28px;
+    line-height: 120%;
+  }
+
+  .featuresItemText h3 {
+    font-size: 18px;
+  }
+
+  .featuresItemText p {
+    font-size: 14px;
+  }
+
+  .content > img {
+    max-width: 400px;
+    height: 400px;
+    object-fit: contain;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .text h1 {
+    font-size: 18px;
+    padding: 8px 20px;
+  }
+
+  .text h2 {
+    font-size: 24px;
+  }
+
+  .featuresList {
+    gap: 20px;
+  }
+
+  .featuresItem img {
+    width: 35px;
+    height: 35px;
+    padding: 8px;
+  }
+
+  .featuresItemText h3 {
+    font-size: 16px;
+  }
+
+  .featuresItemText p {
+    font-size: 12px;
+  }
+
+  .content > img {
+    max-width: 300px;
+  }
+}
