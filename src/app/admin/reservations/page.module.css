@@ -1,6 +1,3 @@
-/* BookingsPage.module.css */
-
-/* Main Container */
 .main {
   padding: 2rem;
   background-color: #f9f9f9;
@@ -8,7 +5,6 @@
   font-family: Arial, sans-serif;
 }
 
-/* Title */
 .title {
   font-size: 2rem;
   font-weight: bold;
@@ -16,7 +12,6 @@
   margin-bottom: 1.5rem;
 }
 
-/* Table Styles */
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -47,10 +42,23 @@
   background-color: #eaeaea;
 }
 
-/* Loading/Error Messages */
 .message {
   color: #555;
   font-size: 1.2rem;
   text-align: center;
   margin: 1rem 0;
+}
+
+.deleteButton {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.deleteButton:hover {
+  background-color: #cc0000;
 }

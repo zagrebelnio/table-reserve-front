@@ -31,6 +31,18 @@ const BookingsPage = () => {
     }
   };
 
+  const handleDelete = async (id) => {
+    if (!token) return;
+
+    try {
+      await reservationService.cancelReservation(token, id);
+      fetchBookings();
+    } catch (err) {
+      console.error('Error deleting reservation:', err);
+      setError('Failed to delete reservation');
+    }
+  };
+
   useEffect(() => {
     fetchBookings();
   }, [token]);
@@ -50,6 +62,7 @@ const BookingsPage = () => {
             <th>Час</th>
             <th>№ Столика</th>
             <th>Гості</th>
+            <th>Дії</th>
           </tr>
         </thead>
         <tbody>
@@ -68,6 +81,14 @@ const BookingsPage = () => {
               </td>
               <td>{booking.number}</td>
               <td>{booking.numberOfGuests}</td>
+              <td>
+                <button
+                  className={styles.deleteButton}
+                  onClick={() => handleDelete(booking.id)}
+                >
+                  Видалити
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>

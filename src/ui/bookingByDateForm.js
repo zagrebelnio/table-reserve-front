@@ -17,7 +17,6 @@ const BookingByDateForm = ({ onDateSelected }) => {
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
-          required
           className={styles.input}
         />
       </label>
