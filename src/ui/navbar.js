@@ -8,10 +8,16 @@ import { logoIcon, defaultAvatar } from '@/assets/media';
 import { useAuth } from '@/lib/auth/authContext';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import { decodeToken } from '@/util/decodeToken';
+import { useSession } from 'next-auth/react';
 
 export default function Navbar() {
   const pathname = usePathname();
+  const { data: session } = useSession();
+  const token = session?.accessToken;
   const { user, loading, error } = useAuth();
+
+  const isAdmin = token ? decodeToken(token) === 'Admin' : false;
 
   const renderCta = () => {
     if (loading) {
@@ -79,6 +85,14 @@ export default function Navbar() {
         >
           Контакти
         </Link>
+        {isAdmin && (
+          <Link
+            href="/admin"
+            className={pathname === '/admin' ? styles.active : ''}
+          >
+            Адмін Панель
+          </Link>
+        )}
       </div>
       {renderCta()}
     </nav>
