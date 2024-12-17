@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styles from './bookingByDateForm.module.css';
 
 const BookingByDateForm = ({ onDateSelected }) => {
   const [date, setDate] = useState('');
@@ -9,18 +10,20 @@ const BookingByDateForm = ({ onDateSelected }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Filter by Date</h2>
-      <label>
-        Date:
+    <form onSubmit={handleSubmit} className={styles.form}>
+      <h2 className={styles.title}>Фільтрувати за датою</h2>
+      <label className={styles.label}>
         <input
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
           required
+          className={styles.input}
         />
       </label>
-      <button type="submit">Filter</button>
+      <button type="submit" className={styles.button}>
+        Застосувати
+      </button>
     </form>
   );
 };

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import BookingByDateForm from '@/ui/bookingByDateForm';
 import { reservationService } from '@/lib/reservation/reservationService';
 import { useSession } from 'next-auth/react';
+import styles from './page.module.css';
 
 const BookingsPage = () => {
   const { data: session, status } = useSession();
@@ -35,20 +36,20 @@ const BookingsPage = () => {
   }, [token]);
 
   return (
-    <main>
-      <h1>Manage Bookings</h1>
+    <main className={styles.main}>
+      <h1 className={styles.title}>Керування бронюваннями</h1>
       <BookingByDateForm onDateSelected={fetchBookings} />
-      {loading && <p>Loading bookings...</p>}
-      {error && <p>{error}</p>}
-      <table>
+      {loading && <p className={styles.message}>Loading bookings...</p>}
+      {error && <p className={styles.message}>{error}</p>}
+      <table className={styles.table}>
         <thead>
           <tr>
-            <th>User</th>
-            <th>Email</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Table</th>
-            <th>Guests</th>
+            <th>Користувач</th>
+            <th>Пошта</th>
+            <th>Дата</th>
+            <th>Час</th>
+            <th>№ Столика</th>
+            <th>Гості</th>
           </tr>
         </thead>
         <tbody>

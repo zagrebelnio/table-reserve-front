@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { tableService } from '@/lib/table/tableService';
 import { useSession } from 'next-auth/react';
+import styles from './addTableForm.module.css';
 
 const AddTableForm = ({ onTableAdded }) => {
   const { data: session } = useSession();
@@ -29,20 +30,21 @@ const AddTableForm = ({ onTableAdded }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Add New Table</h2>
-      <label>
-        Table Number:
+    <form onSubmit={handleSubmit} className={styles.form}>
+      <h2 className={styles.title}>Додати новий столик</h2>
+      <label className={styles.label}>
+        № Столика:
         <input
           type="number"
           min={1}
           value={number}
           onChange={(e) => setNumber(e.target.value)}
           required
+          className={styles.input}
         />
       </label>
-      <label>
-        Capacity:
+      <label className={styles.label}>
+        Місткість:
         <input
           type="number"
           min={1}
@@ -50,10 +52,11 @@ const AddTableForm = ({ onTableAdded }) => {
           value={capacity}
           onChange={(e) => setCapacity(Number(e.target.value))}
           required
+          className={styles.input}
         />
       </label>
-      <button type="submit" disabled={loading}>
-        {loading ? 'Adding...' : 'Add Table'}
+      <button type="submit" disabled={loading} className={styles.button}>
+        {loading ? 'Додається...' : 'Додати'}
       </button>
     </form>
   );

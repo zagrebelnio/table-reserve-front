@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import AddTableForm from '@/ui/addTableForm';
 import { tableService } from '@/lib/table/tableService';
 import { useSession } from 'next-auth/react';
+import styles from './page.module.css';
 
 const TablesPage = () => {
   const { data: session } = useSession();
@@ -39,17 +40,17 @@ const TablesPage = () => {
   }, []);
 
   return (
-    <main>
-      <h1>Manage Tables</h1>
+    <main className={styles.main}>
+      <h1 className={styles.title}>Керування столиками</h1>
       <AddTableForm onTableAdded={fetchTables} />
-      {loading && <p>Loading tables...</p>}
-      {error && <p>{error}</p>}
-      <table>
+      {loading && <p className={styles.message}>Loading tables...</p>}
+      {error && <p className={styles.message}>{error}</p>}
+      <table className={styles.table}>
         <thead>
           <tr>
-            <th>Number</th>
-            <th>Capacity</th>
-            <th>Actions</th>
+            <th>Номер</th>
+            <th>Місткість</th>
+            <th>Дії</th>
           </tr>
         </thead>
         <tbody>
@@ -58,7 +59,12 @@ const TablesPage = () => {
               <td>{table.number}</td>
               <td>{table.capacity}</td>
               <td>
-                <button onClick={() => handleDelete(table.id)}>Delete</button>
+                <button
+                  onClick={() => handleDelete(table.id)}
+                  className={styles.deleteButton}
+                >
+                  Видалити
+                </button>
               </td>
             </tr>
           ))}
