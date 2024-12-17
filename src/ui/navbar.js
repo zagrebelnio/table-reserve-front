@@ -10,14 +10,18 @@ import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { decodeToken } from '@/util/decodeToken';
 import { useSession } from 'next-auth/react';
+import { useState } from 'react';
 
 export default function Navbar() {
   const pathname = usePathname();
   const { data: session } = useSession();
   const token = session?.accessToken;
   const { user, loading, error } = useAuth();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const isAdmin = token ? decodeToken(token) === 'Admin' : false;
+
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
 
   const renderCta = () => {
     if (loading) {
@@ -51,10 +55,14 @@ export default function Navbar() {
 
   return (
     <nav className={styles.navbar}>
-      <div className={styles.links}>
+      <div>
         <Link href="/">
           <Image src={logoIcon} width={65} height={65} alt="logo" />
         </Link>
+      </div>
+
+      {/* Desktop Links */}
+      <div className={styles.links}>
         <Link
           href="/restaurant"
           className={pathname === '/restaurant' ? styles.active : ''}
@@ -94,6 +102,29 @@ export default function Navbar() {
           </Link>
         )}
       </div>
+
+      <div className={styles.hamburger} onClick={toggleMenu}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div className={`${styles.mobileMenu} ${menuOpen ? styles.active : ''}`}>
+        <Link href="/restaurant">Про ресторан</Link>
+        <Link href="/reservation">Бронювання</Link>
+        <Link href="/how-it-works">Як це працює</Link>
+        <Link href="/about">Про нас</Link>
+        <Link href="/contacts">Контакти</Link>
+        {isAdmin && <Link href="/admin">Адмін Панель</Link>}
+        {!user && (
+          <>
+            <Link href="/auth?mode=login">Увійти</Link>
+            <Link href="/auth?mode=signup">Зареєструватися</Link>
+          </>
+        )}
+      </div>
+
+      {/* Call to Action */}
       {renderCta()}
     </nav>
   );

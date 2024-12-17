@@ -1,101 +1,154 @@
+.main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
 .content {
   display: flex;
-  gap: 50px;
+  gap: 60px;
   justify-content: center;
-  padding: 80px 0;
+  align-items: center;
+  padding: 60px 20px;
 }
 
 .info {
   display: flex;
   flex-direction: column;
-  width: 630px;
+  gap: 30px;
+  max-width: 500px;
 }
 
 .info h1 {
-  padding: 10px 32px;
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--bg-color);
-  background-color: var(--title-color);
-  border-radius: 8px;
-  display: inline-block;
-  align-self: flex-end;
+  font-size: 38px;
+  font-weight: 600;
+  color: var(--heading-color);
 }
 
-.address {
+.address,
+.phone,
+.email {
   display: flex;
-  gap: 10px;
+  gap: 15px;
   align-items: center;
-  margin-top: 100px;
-}
-
-.address img {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
 }
 
 .address p,
-.workHours p {
-  font-size: 14px;
+.phoneList li,
+.email p {
+  font-size: 16px;
+  color: var(--text-color);
 }
 
-.workHours {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  margin-top: 40px;
+.workHours p {
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .workHoursList {
   display: flex;
-  gap: 50px;
-  font-size: 16px;
-  color: var(--regular-color);
-  line-height: 29px;
-}
-
-.phone {
-  display: flex;
+  flex-direction: column;
   gap: 10px;
-  margin-top: 45px;
-  align-items: center;
+  margin-top: 10px;
 }
 
-.phone img {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
+.workHoursList div p:first-child {
+  font-weight: 500;
+  color: var(--heading-color);
 }
 
 .phoneList {
   list-style: none;
-  font-size: 14px;
-}
-
-.email {
+  padding: 0;
   display: flex;
-  gap: 10px;
-  align-items: center;
-  margin-top: 50px;
-  font-size: 14px;
+  flex-direction: column;
+  gap: 5px;
 }
 
-.email img {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-}
-
-.socials {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  margin-top: 40px;
-  font-size: 14px;
+.socials p {
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .socialsContainer {
   display: flex;
   gap: 15px;
+}
+
+.content img {
+  max-width: 400px;
+  height: auto;
+  border-radius: 8px;
+}
+
+@media screen and (max-width: 1024px) {
+  .content {
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .info h1 {
+    font-size: 32px;
+  }
+
+  .address,
+  .phone,
+  .email {
+    justify-content: center;
+  }
+
+  .socialsContainer {
+    justify-content: center;
+  }
+
+  .content img {
+    max-width: 350px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .info h1 {
+    font-size: 28px;
+  }
+
+  .address p,
+  .phoneList li,
+  .email p {
+    font-size: 14px;
+  }
+
+  .workHours p {
+    font-size: 16px;
+  }
+
+  .socials p {
+    font-size: 16px;
+  }
+
+  .content img {
+    max-width: 300px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .info h1 {
+    font-size: 24px;
+  }
+
+  .address,
+  .phone,
+  .email {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .workHoursList {
+    gap: 5px;
+  }
+
+  .content img {
+    max-width: 250px;
+  }
 }

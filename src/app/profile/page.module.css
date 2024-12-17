@@ -21,7 +21,7 @@
 .profile {
   display: flex;
   gap: 60px;
-  padding: 20px 0;
+  padding: 20px;
 }
 
 .sidebar {
@@ -29,10 +29,10 @@
   flex-direction: column;
   padding: 30px 50px;
   background-color: var(--bg-sidebar-color);
-  border-radius: 100px;
-  margin-left: 100px;
+  border-radius: 50px;
   gap: 30px;
   min-height: 700px;
+  width: 300px;
 }
 
 .sidebar img {
@@ -45,6 +45,7 @@
 .info {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 }
 
 .info h1,
@@ -83,4 +84,125 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.empty {
+  font-size: 18px;
+  color: var(--regular-light-color);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+  .profile {
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    padding: 20px 10px;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-height: auto;
+    border-radius: 30px;
+    align-items: center;
+    padding: 20px 30px;
+  }
+
+  .sidebar img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .info h1 {
+    font-size: 36px;
+    text-align: center;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .reservations {
+    padding: 20px;
+    gap: 30px;
+  }
+
+  .title {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    padding: 15px 20px;
+  }
+
+  .sidebar img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .info h1 {
+    font-size: 28px;
+  }
+
+  .header {
+    text-align: center;
+  }
+
+  .title {
+    font-size: 14px;
+  }
+
+  .reservations {
+    gap: 20px;
+    padding: 15px;
+    border-radius: 20px;
+  }
+
+  .reservationsList {
+    gap: 15px;
+  }
+
+  .empty {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .profile {
+    gap: 20px;
+  }
+
+  .sidebar {
+    padding: 10px 15px;
+    border-radius: 20px;
+  }
+
+  .sidebar img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .info h1 {
+    font-size: 24px;
+  }
+
+  .title {
+    font-size: 12px;
+  }
+
+  .reservations {
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .reservationsList {
+    gap: 10px;
+  }
+
+  .empty {
+    font-size: 14px;
+  }
 }
